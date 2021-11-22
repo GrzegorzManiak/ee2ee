@@ -1,5 +1,6 @@
+const crypto = require('crypto');
+
 export class EE2EE {
-    #crypto:any;
     #client:any;
 
     sharedPrivateKey:any;
@@ -18,15 +19,13 @@ export class EE2EE {
         return Buffer.from(base64, 'base64');
     }
 
-    constructor(crypto:any, sPublicKey?:any, bPublicKey?:any) {
+    constructor(sPublicKey?:any, bPublicKey?:any) {
         // If the Shared Key, and the B public key are set.
         // I will assume that this is the client, not the server,
         // in other words, this is Alice, Bob has generated his
         // shared public key and his public key, and Alice is 
         // receiving his keys, therefor the shared private keys are
         // automatically generated.
-        
-        this.#crypto = crypto;
 
         // If the sPublicKey isnt set, generate a new shared key
         if(sPublicKey) this.sharedPublicKey = sPublicKey;
@@ -60,8 +59,8 @@ export class EE2EE {
 
     // Encrpts the data using the established shared private key
     encrypt(data:string):any {
-        let iv:any = this.#crypto.randomBytes(64), // generate a random iv using nodes crypto module
-            cipher:any = this.#crypto.createCipheriv('aes-256-gcm', this.sharedPrivateKey, iv), // using aes-256-gcm, the shared private key and the iv, create the cipher
+        let iv:any = crypto.randomBytes(64), // generate a random iv using nodes crypto module
+            cipher:any = crypto.createCipheriv('aes-256-gcm', this.sharedPrivateKey, iv), // using aes-256-gcm, the shared private key and the iv, create the cipher
             encrypted:string = cipher.update(data, 'utf8', 'hex'); // encrypt the data
     
         encrypted += cipher.final('hex');
@@ -84,7 +83,7 @@ export class EE2EE {
         iv = this.#base64ToByteArray(iv);
         
         // create the decipher using the shared private key, the tag and the iv
-        let decipher:any = this.#crypto.createDecipheriv('aes-256-gcm', this.sharedPrivateKey, iv);
+        let decipher:any = crypto.createDecipheriv('aes-256-gcm', this.sharedPrivateKey, iv);
         decipher.setAuthTag(tag);
         
         // finaly, decrypt the data

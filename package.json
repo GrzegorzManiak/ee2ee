@@ -1,10 +1,11 @@
 {
     "name": "ee2ee",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "",
     "main": "main.ts",
     "scripts": {
-        "test": "nodemon test.ts"
+        "test": "nodemon test.ts",
+        "comp": "tsc -p ./tsconfig.json"
     },
     "author": "",
     "license": "ISC",

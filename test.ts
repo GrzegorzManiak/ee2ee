@@ -1,7 +1,6 @@
 import { EE2EE } from './main';
-const crypto = require('crypto');
 
-let bob = new EE2EE(crypto);
+let bob = new EE2EE();
 
 // Shared Public key //
 console.log(bob.sharedPublicKey);
@@ -9,7 +8,7 @@ console.log(bob.sharedPublicKey);
 // Bob's public key // 
 console.log(bob.aPublicKey);
 
-let alice = new EE2EE(crypto, bob.sharedPublicKey, bob.aPublicKey);
+let alice = new EE2EE(bob.sharedPublicKey, bob.aPublicKey);
 
 bob.bPublicKey = alice.aPublicKey;
 

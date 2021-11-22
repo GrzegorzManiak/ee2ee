@@ -4,14 +4,13 @@ EE2EE
 This is just me learning, I wouldn't use this for anything.
 
 #### [1.a] Init (Orgin)
-Import node's crypto module and the EE2EE module, pass the crypto module to EE2EE.
+Import node's crypto module and the EE2EE module.
 Since we didn't provide any *shared public key*, EE2EE will generate one for us, also, it will automatically generate Bob's public key.
 
 ```typescript
 import { EE2EE } from './main';
-import crypto from 'crypto';
 
-let bob = new EE2EE(crypto);
+let bob = new EE2EE();
 
 // Shared Public key //
 console.log(bob.sharedPublicKey);
@@ -21,14 +20,13 @@ console.log(bob.aPublicKey);
 ```
 
 #### [1.b] Init (Client)
-Import node's crypto module and the EE2EE module, pass the crypto module to EE2EE.
+Import node's crypto module and the EE2EE module.
 Since we reciveing, we will define the Orgin's *Shared Public key* and their *Public key*
 
 ```typescript
 import { EE2EE } from './main';
-import crypto from 'crypto';
 
-let alice = new EE2EE(crypto, sharedPublicKey, aPublicKey);
+let alice = new EE2EE(sharedPublicKey, aPublicKey);
 
 // Shared Public key //
 console.log(alice.sharedPublicKey);
@@ -101,12 +99,11 @@ console.log(decrypted);
 Demo code
 ```typescript
 import { EE2EE } from './main';
-import crypto from 'crypto';
 
-let bob = new EE2EE(crypto),
+let bob = new EE2EE(),
     bPub = bob.aPublicKey;
 
-let alice = new EE2EE(crypto, bob.sharedPublicKey, bPub);
+let alice = new EE2EE(bob.sharedPublicKey, bPub);
 
 bob.bPublicKey = alice.aPublicKey;
 
