@@ -1,18 +1,21 @@
 import { EE2EE } from './main';
-import crypto from 'crypto';
+const crypto = require('crypto');
 
-let bob = new EE2EE(crypto),
-    bPub = bob.aPublicKey;
+let bob = new EE2EE(crypto);
 
-let alice = new EE2EE(crypto, bob.sharedPublicKey, bPub);
+// Shared Public key //
+console.log(bob.sharedPublicKey);
+
+// Bob's public key // 
+console.log(bob.aPublicKey);
+
+let alice = new EE2EE(crypto, bob.sharedPublicKey, bob.aPublicKey);
 
 bob.bPublicKey = alice.aPublicKey;
 
-bob.getSharedPrivateKey();
-alice.getSharedPrivateKey();
+// generate the shared private key
+let sharedPrivateKey = bob.getSharedPrivateKey();
 
-let encrypted = bob.encryptCompact('Hello World!');
-console.log(encrypted);
-
-let decrypted = alice.decryptCompact(encrypted);
-console.log(decrypted);
+// the private key that both parties have
+console.log(sharedPrivateKey);
+console.log(alice.getSharedPrivateKey());

@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "Node",
+        "target": "ES2021",
+        "outDir": "./lib/",
+    },
+    "include": ["./"],
+    "exclude": ["node_modules", "test.ts"]
+}
