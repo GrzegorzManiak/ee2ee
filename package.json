@@ -1,0 +1,14 @@
+{
+    "name": "ee2ee",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.ts",
+    "scripts": {
+        "test": "nodemon test.ts"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^16.11.9"
+    }
+}

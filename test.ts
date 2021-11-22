@@ -1,13 +1,3 @@
-EE2EE
-=====
-## Easy End 2 End Encryption
-
----
-`This is just me learning, I would'nt use this for anything.`
----
-
-Demo code
-```typescript
 import { EE2EE } from './main';
 import crypto from 'crypto';
 
@@ -26,4 +16,3 @@ console.log(encrypted);
 
 let decrypted = alice.decryptCompact(encrypted);
 console.log(decrypted);
-```
