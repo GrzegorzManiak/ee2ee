@@ -1,10 +1,8 @@
 EE2EE
 =====
-## Easy End 2 End Encryption
+### Easy End 2 End Encryption
 
----
-`This is just me learning, I would'nt use this for anything.`
----
+`This is just me learning, I wouldn't use this for anything.`
 
 Demo code
 ```typescript
