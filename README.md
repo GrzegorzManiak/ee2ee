@@ -1,3 +1,5 @@
+# This was a learning experience
+
 EE2EE
 =====
 ### Easy End 2 End Encryption
